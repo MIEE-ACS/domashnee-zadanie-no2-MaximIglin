@@ -25,7 +25,7 @@ namespace Second_DZ
         }
 
         static double GetYfromFirstSegment(double x){
-            double y = (double)0.25 * x + (double)(0.5);
+            double y = Math.Round((double)0.25 * x + (double)(0.5), 2);
             Console.WriteLine($"Значение функции при x = {x}: {y}");
             return y;
         }
@@ -40,7 +40,7 @@ namespace Second_DZ
             };
             if (correct_radius <= first_radius){
                 double tetta = (double)(-Math.Acos((x + 2) / 2));
-                y = (double)((2 * Math.Sin(tetta) + 2));
+                y = Math.Round((double)((2 * Math.Sin(tetta) + 2)), 2);
                 Console.WriteLine($"Значение функции при x = {x}: {y}");                          
             };
             return y;
@@ -55,7 +55,7 @@ namespace Second_DZ
             };
 
             if (correct_radius <= second_radius){
-                 y = (double)(Math.Sqrt(second_radius * second_radius - x * x));
+                 y = Math.Round((double)(Math.Sqrt(second_radius * second_radius - x * x)), 2);
                 if (y >= 0 && y <= 2){
                     Console.WriteLine($"Значение функции при x = {x}: {y}");
                     return y;
@@ -65,7 +65,7 @@ namespace Second_DZ
         }
 
         static double GetYFromFourthSegment(double x){
-            double y = (double)(-x + 2) ;
+            double y = Math.Round((double)(-x + 2), 2) ;
             Console.WriteLine($"Значение функции при x = {x}: {y}");
             return y;
         }
@@ -94,24 +94,7 @@ namespace Second_DZ
 
         static void PrintAllValues(){
             for(double x = -6.5; x <= 3; x += (double)0.2){
-            Console.WriteLine(x);    
-            if((double)-6.5 <= x && x < (double)-2){
-                GetYfromFirstSegment(x);
-            };
-            if((double)-2 <= x && x <= (double)0){
-                double first_radius = (double)2;
-                GetYFromSecondSegment(x, first_radius);
-            };
-            if((double)-0 < x && x <= (double)2){
-                double second_radius = (double)2;
-                GetYFromThirdSegment(x, second_radius);
-            };
-            if((double)2 < x && x <= (double)3){
-                GetYFromFourthSegment(x);
-            };
-            if (x > (double)3 || x < (double)-6.5){
-                Console.WriteLine("x должен принадлежать отрезку [-6.5, 3]");
-            }            
+            WhatIsFunction(x);         
         }
                 
             }
