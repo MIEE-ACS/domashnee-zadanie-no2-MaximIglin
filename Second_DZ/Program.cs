@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Second_DZ
 {
@@ -6,7 +6,9 @@ namespace Second_DZ
     {
         static void Main(string[] args)
         {   
-            PrintAllValues();
+            Console.WriteLine("Введите радиус");
+            double r = double.Parse(Console.ReadLine());
+            PrintAllValues(r);
 
             while(true){
                 try{
@@ -16,7 +18,7 @@ namespace Second_DZ
                     break;
                 }
                 double x = double.Parse(user_input);
-                WhatIsFunction(x);
+                WhatIsFunction(x, r);
                 }
                 catch(System.FormatException){
                     Console.WriteLine("Введён некорректный x");
@@ -70,19 +72,16 @@ namespace Second_DZ
             return y;
         }
         
-        static void WhatIsFunction(double x){
+        static void WhatIsFunction(double x, double r){
             if((double)-6.5 <= x && x < (double)-2){
                 GetYfromFirstSegment(x);
             };
             if((double)-2 <= x && x <= (double)0){
-                Console.WriteLine("Введите радиус окружности: ");
-                double first_radius = double.Parse(Console.ReadLine());
-                GetYFromSecondSegment(x, first_radius);
+
+                GetYFromSecondSegment(x, r);
             };
             if((double)-0 < x && x <= (double)2){
-                Console.WriteLine("Введите радиус окружности: ");
-                double second_radius = double.Parse(Console.ReadLine());
-                GetYFromThirdSegment(x, second_radius);
+                GetYFromThirdSegment(x, r);
             };
             if((double)2 < x && x <= (double)3){
                 GetYFromFourthSegment(x);
@@ -92,12 +91,11 @@ namespace Second_DZ
             }            
         }
 
-        static void PrintAllValues(){
+        static void PrintAllValues(double r){
             for(double x = -6.5; x <= 3; x += (double)0.2){
-            WhatIsFunction(x);         
+            WhatIsFunction(Math.Round(x, 2), r);         
         }
                 
             }
         }
     }
-
